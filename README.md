@@ -1,8 +1,13 @@
 ## THIS IS GUIDE HOW TO RUN PX4 on Gazebo
+by El jausyan
 
 1. step 1 : run px4 and gazebo
 ```sh
+cd ~/px4_ws/PX4-Autopilot
 PX4_SIM_WORLD=arena_safmc make px4_sitl gazebo-classic_iris
+```
+```sh
+make px4_sitl gazebo-classic_iris
 ```
 2. run mavros
 ```bash
@@ -14,16 +19,42 @@ ros2 topic echo /mavros/state
 ```
 
 ## HOW TO RUN ARENA SAFMC 2026
-CARA 1: Langsung via command (PALING SIMPLE)
+Method 1 : Directly run from terminal
 ```bash
 cd ~/px4_ws/PX4-Autopilot
 export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:~/ardupilot_gazebo/models
 make px4_sitl gazebo-classic_iris PX4_SITL_WORLD=arena_safmc
 ```
-CARA 2: Set environment variable dulu
+Method 2 : Set environment
 ```bash
 cd ~/px4_ws/PX4-Autopilot
 export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:~/ardupilot_gazebo/models
 export PX4_SITL_WORLD=arena_safmc
 make px4_sitl gazebo-classic_iris
+```
+
+## How to run Swarm 2 Drone
+1. First go to PX4 Workspace
+```sh
+cd ~/px4_ws/PX4-Autopilot
+``` 
+2. Launch dual Drone world File
+```sh
+./Tools/simulation/gazebo-classic/sitl_multiple_run.sh -n 2 -m iris -w empty
+```
+This will spawn dual drone, if you want to spawn more drone you can adjust the flag <b>-n </b> followed by how many drone you want to spawn
+
+3. Run mavros for Drone 1 "uav1"
+```sh
+     ros2 run mavros mavros_node --ros-args \
+       -r __ns:=/uav0 \
+       -p fcu_url:=udp://:14540@localhost:14580 \
+       -p tgt_system:=1
+``` 
+4. Run mavros for Drone 2 "uav0"
+```sh
+     ros2 run mavros mavros_node --ros-args \
+       -r __ns:=/uav1 \
+       -p fcu_url:=udp://:14541@localhost:14581 \
+       -p tgt_system:=2
 ```
