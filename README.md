@@ -46,15 +46,13 @@ This will spawn dual drone, if you want to spawn more drone you can adjust the f
 
 3. Run mavros for Drone 1 "uav1"
 ```sh
-     ros2 run mavros mavros_node --ros-args \
-       -r __ns:=/uav0 \
-       -p fcu_url:=udp://:14540@localhost:14580 \
-       -p tgt_system:=1
+ros2 run mavros mavros_node --ros-args -r __ns:=/uav1 -p fcu_url:=udp://:14541@localhost:14581 -p tgt_system:=2
 ``` 
-4. Run mavros for Drone 2 "uav0"
+4. Run mavros for Drone 2 "uav2"
 ```sh
-     ros2 run mavros mavros_node --ros-args \
-       -r __ns:=/uav1 \
-       -p fcu_url:=udp://:14541@localhost:14581 \
-       -p tgt_system:=2
+ros2 run mavros mavros_node --ros-args -r __ns:=/uav2 -p fcu_url:=udp://:14542@localhost:14582 -p tgt_system:=3
+```
+5. Run mavros for Drone 3 "uav3"
+```sh
+ros2 run mavros mavros_node --ros-args -r __ns:=/uav3 -p fcu_url:=udp://:14543@localhost:14583 -p tgt_system:=4
 ```
