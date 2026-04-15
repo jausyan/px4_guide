@@ -45,6 +45,9 @@ cd ~/px4_ws/PX4-Autopilot
 ```sh
 ./Tools/simulation/gazebo-classic/sitl_multiple_run.sh -n 1 -m iris_livox_mid360 -w empty
 ```
+```sh
+make px4_sitl gazebo-classic_iris__arena_teknofest
+```
 This will spawn dual drone, if you want to spawn more drone you can adjust the flag <b>-n </b> followed by how many drone you want to spawn
 
 3. Run mavros for Drone 1 "uav1"
