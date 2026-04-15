@@ -57,6 +57,9 @@ make px4_sitl gazebo-classic_iris__arena_teknofest
 ```sh
 ./Tools/simulation/gazebo-classic/sitl_multiple_run.sh -m iris_livox_mid360 -w arena_teknofest -s "iris_livox_mid360:1:4:4,iris_livox_mid360:1:4:7"
 ```
+```sh
+./Tools/simulation/gazebo-classic/sitl_multiple_run.sh -m iris_livox_mid360 -w arena_teknofest -s "iris_livox_mid360:1:4:5,iris_livox_mid360:1:4:8,iris_livox_mid360:1:4:2"
+```
 This will spawn dual drone, if you want to spawn more drone you can adjust the flag <b>-n </b> followed by how many drone you want to spawn
 
 3. Run mavros for Drone 1 "uav1"
